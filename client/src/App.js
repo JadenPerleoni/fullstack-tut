@@ -10,6 +10,7 @@ import Form from "./components/Form/Form.js";
 import useStyles from "./styles";
 
 const App = () => {
+  const classes = useStyles();
 
   return (
     <Container maxwidth="lg">
