@@ -1,21 +1,24 @@
-import React from "react";
-import Container from "@mui/material/Container";
-import AppBar from "@mui/material/AppBar";
-import Typography from "@mui/material/Typography";
-import Grow from "@mui/material/Grow";
-import Grid from "@mui/material/Grid";
+import React, { useEffect } from "react";
 import memories from "./images/memories.png";
 import Posts from "./components/Posts/Posts.js";
 import Form from "./components/Form/Form.js";
 import useStyles from "./styles";
+import { AppBar, Container, Typography, Grow, Grid } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { getPosts } from "./actions/posts";
 
-const App = () => {
+const App = () => { 
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, []);
 
   return (
     <Container maxwidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className ={classes.heading} variant="h2" align="center">
+        <Typography className={classes.heading} variant="h2" align="center">
           Memories
         </Typography>
         <img src={memories} alt="memories" height="200" width="200"></img>
